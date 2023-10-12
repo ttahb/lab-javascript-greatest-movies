@@ -2007,8 +2007,61 @@ const moviesArray = [
 // _Bonus_: It seems some of the directors had directed multiple movies so they will pop up multiple times in the array of directors.
 // How could you "clean" a bit this array and make it unified (without duplicates)?
 function getAllDirectors(moviesArray) {
-    return moviesArray.map(movie => movie.director);
+    const allDirectors = moviesArray.map(movie => movie.director);
+    console.log(allDirectors);
+
+    const uniqueDirectors = allDirectors.reduce((newArray, director) => {
+        if(!newArray.includes(director)){
+            newArray.push(director);
+        }
+        return newArray;
+    }, []);
+
+    console.log("uniqueDirectors", uniqueDirectors);
+    return allDirectors;
 }
+
+//Test for the duplicates.
+// getAllDirectors([{
+//     title: 'PK',
+//     year: 2014,
+//     director: 'Rajkumar Hirani',
+//     duration: '2h 33min',
+//     genre: ['Comedy', 'Drama', 'Fantasy', 'Sci-Fi'],
+//     score: 8.2
+//   },
+//   {
+//     title: 'Dog Day Afternoon',
+//     year: 1975,
+//     director: 'Sidney Lumet',
+//     duration: '2h 5min',
+//     genre: ['Biography', 'Crime', 'Drama', 'Thriller'],
+//     score: 8
+//   },
+//   {
+//     title: 'Dead Poets Society',
+//     year: 1989,
+//     director: 'Peter Weir',
+//     duration: '2h 8min',
+//     genre: ['Comedy', 'Drama'],
+//     score: 8
+//   },{
+//     title: 'Dead Poets Society',
+//     year: 1989,
+//     director: 'Peter Weir',
+//     duration: '2h 8min',
+//     genre: ['Comedy', 'Drama'],
+//     score: 8
+//   },
+//   {
+//     title: 'Dog Day Afternoon',
+//     year: 1975,
+//     director: 'Sidney Lumet',
+//     duration: '2h 5min',
+//     genre: ['Biography', 'Crime', 'Drama', 'Thriller'],
+//     score: 8
+//   }]);
+
 
 // Iteration 2: Steven Spielberg. The best? - How many drama movies did STEVEN SPIELBERG direct?
 function howManyMovies(moviesArray) {
@@ -2066,7 +2119,7 @@ function dramaMoviesScore(moviesArray) {
 
 }
 
-dramaMoviesScore(moviesArray);
+//dramaMoviesScore(moviesArray);
 // Iteration 5: Ordering by year - Order by year, ascending (in growing order)
 function orderByYear(moviesArray) {}
 
