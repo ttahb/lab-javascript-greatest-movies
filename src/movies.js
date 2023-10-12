@@ -32,29 +32,21 @@
 //       score: 9
 //     },
 //     {
-//       title: '12 Angry Men',
-//       year: 1957,
-//       director: 'Sidney Lumet',
-//       duration: '1h 36min',
-//       genre: ['Crime', 'Drama'],
-//       score: 8.9
-//     },
-//     {
-//       title: 'Schindler"s List',
-//       year: 1993,
-//       director: 'Steven Spielberg',
-//       duration: '3h 15min',
-//       genre: ['Biography', 'Drama', 'History'],
-//       score: 8.9
-//     },
-//     {
-//       title: 'Pulp Fiction',
-//       year: 1994,
-//       director: 'Quentin Tarantino',
-//       duration: '2h 34min',
-//       genre: ['Crime', 'Drama'],
-//       score: 8.9
-//     }
+//         title: 'Star Wars: Episode V - The Empire Strikes Back',
+//         year: 1980,
+//         director: 'Irvin Kershner',
+//         duration: '2h 4min',
+//         genre: ['Action', 'Adventure', 'Fantasy', 'Sci-Fi'],
+//         score: 8.8
+//       },
+//       {
+//         title: 'Inception',
+//         year: 2010,
+//         director: 'Christopher Nolan',
+//         duration: '2h 28min',
+//         genre: ['Action', 'Adventure', 'Sci-Fi', 'Thriller'],
+//         score: 8.8
+//       }
 //   ];
   
 
