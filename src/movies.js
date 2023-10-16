@@ -243,7 +243,7 @@ function orderAlphabetically(moviesArray) {
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {
     // const copyArray = [...moviesArray];
-    const newArray = moviesArray.map(movie=>movie).map( function(movie){
+    const newArray = moviesArray.map( movie => {
         if(movie.duration !== undefined){
             const durationArray = movie.duration.split(' ');   
             const hours = parseInt(durationArray[0].substring(0, durationArray[0].length-1));
@@ -257,7 +257,7 @@ function turnHoursToMinutes(moviesArray) {
     });
 
     // console.log("mutated",!arraysAreEqual(moviesArray, copyArray));
-    // console.log("newArray", newArray);
+    //  console.log("newArray", newArray);
     // console.log("type of duration", typeof newArray[0].duration)
     return newArray;
 }
@@ -276,11 +276,66 @@ function turnHoursToMinutes(moviesArray) {
 //     return true;
 //   }
 
-//Tesing
-turnHoursToMinutes([{ duration: '2h' }]);
-
+// //Tesing
+// turnHoursToMinutes([{ duration: '2h' }]);
+// turnHoursToMinutes(moviesArray);
 
 // BONUS - Iteration 8: Best yearly score average - Best yearly score average
 function bestYearAvg(moviesArray) {
+    if(moviesArray.length === 0){
+        return null;
+    }
 
+    // Iterate through the array and check pick year -> and score
+    // Also while iterating check if this year is repeated and add to the score   average = sum/count  => newAvg = (avg * count + nextelem)/ (count+1)
+    // { 2001: 8, 2002}
+    // let uniqueYearAndAvgScore = [{ 
+    //     year: moviesArray[0].year,
+    //     average: moviesArray[0].score, 
+    //     count: 1,
+    //     sum: moviesArray[0].score
+    // }];
+    
+    // if(moviesArray.length === 1){
+    //     return `The best year was ${uniqueYearAndAvgScore[0].year} with an average score of ${uniqueYearAndAvgScore[0].average}`;
+    // }
+
+    let uniqueYearAndAvgScore = [];
+    moviesArray.forEach(movie => {
+        if(uniqueYearAndAvgScore.some(yearAndAvg => yearAndAvg.year === movie.year)){
+            uniqueYearAndAvgScore.forEach((yearAndAvg, index) => {
+                if(yearAndAvg.year === movie.year){
+                    uniqueYearAndAvgScore[index].count++;
+                    uniqueYearAndAvgScore[index].sum += movie.score;
+                    uniqueYearAndAvgScore[index].average = uniqueYearAndAvgScore[index].sum/ uniqueYearAndAvgScore[index].count;
+                }
+            });
+
+        } else {
+            uniqueYearAndAvgScore.push({
+                year: movie.year,
+                average: movie.score,
+                count: 1,
+                sum: movie.score
+            })
+        }
+        
+    });
+    uniqueYearAndAvgScore.sort((yearAndAvg1, yearAndAvg2) => yearAndAvg1.year - yearAndAvg2.year)
+    .sort((yearAndAvg1, yearAndAvg2) => yearAndAvg2.average - yearAndAvg1.average)
+    
+    
+    // console.log("uniqueYearAndAvgScore", uniqueYearAndAvgScore);
+    // console.log(`The best year was ${uniqueYearAndAvgScore[0].year} with an average score of ${uniqueYearAndAvgScore[0].average}`);
+    return `The best year was ${uniqueYearAndAvgScore[0].year} with an average score of ${uniqueYearAndAvgScore[0].average}`;
 }
+
+
+// console.log(bestYearAvg([
+//     { year: 2000, score: 9 },
+//     { year: 2000, score: 8 },
+//     { year: 1978, score: 10 },
+//     { year: 1978, score: 7 }
+//   ]));
+
+// console.log(bestYearAvg(moviesArray));
